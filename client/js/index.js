@@ -14,6 +14,7 @@ var Link = router.Link;
 
 var Landing = require('./landing');
 var Planner = require('./planner');
+var PlannerLanding = require('./plannerLanding')
 
 var TripList = require('./tripList');
 var ViewTrip = require('./tripDisplay');
@@ -23,8 +24,8 @@ var AddPoi = require('./searchModule');
 
 var App = function(props) {
     return (
-        <div className="container">
-	       {props.children}
+        <div>
+          {props.children}
         </div>
     );
 };
@@ -35,7 +36,7 @@ var routes = (
       <Route path="/" component={App}>
         <IndexRoute component={Landing} />
         <Route path="/planner" component={Planner}>
-          <IndexRoute component={TripList} />
+          <IndexRoute component={PlannerLanding} />
           <Route path="/planner/triplist" component={TripList} />
           <Route path="/planner/viewtrip" component={ViewTrip} />
           <Route path="/planner/newtrip" component={NewTrip} />

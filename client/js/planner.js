@@ -4,7 +4,7 @@ var connect = require('react-redux').connect;
 var actions = require('./redux/actions');
 
 var SearchModule = require('./searchModule');
-var PlannerHeader = require('./plannerHeader');
+var PlannerLanding = require('./plannerLanding');
 var TripModule = require('./tripModule');
 
 
@@ -17,11 +17,12 @@ var Planner = React.createClass({
   render: function(props) {
     return (
       <div>
-        <PlannerHeader />
+        <div className="container">
           {this.props.children}
+        </div>
         <div className="yelp-credit footer">
-            <p>POWERED BY</p>
-            <a href="http://www.yelp.com" target="_blank"><img src="./assets/yelp-2c.png" /></a>
+          <p>POWERED BY</p>
+          <a href="http://www.yelp.com" target="_blank"><img src="./assets/yelp-2c.png" /></a>
         </div>
       </div>
     )

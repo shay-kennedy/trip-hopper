@@ -2,7 +2,10 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var connect = require('react-redux').connect;
 var actions = require('./redux/actions');
+var Link = require('react-router').Link;
 var TripListDetail = require('./tripListDetail');
+var PlannerHeader = require('./PlannerHeader');
+
 
 
 var TripList = React.createClass({
@@ -30,6 +33,10 @@ var TripList = React.createClass({
     });
     return (
       <div className="saved-display">
+        <PlannerHeader />
+        <div className="single-nav"> 
+          <Link to="/planner/newtrip"><div>New Trip</div></Link>
+        </div>
         <h1>Saved Trips</h1>
         {savedTrips}
       </div>
