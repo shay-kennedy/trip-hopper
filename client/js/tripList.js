@@ -4,7 +4,7 @@ var connect = require('react-redux').connect;
 var actions = require('./redux/actions');
 var Link = require('react-router').Link;
 var TripListDetail = require('./tripListDetail');
-var PlannerHeader = require('./PlannerHeader');
+var PlannerHeader = require('./plannerHeader');
 
 
 
