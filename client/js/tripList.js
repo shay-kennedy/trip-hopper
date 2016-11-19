@@ -4,7 +4,9 @@ var connect = require('react-redux').connect;
 var actions = require('./redux/actions');
 var TripListDetail = require('./tripListDetail');
 
+
 var TripList = React.createClass({
+  
   getInitialState: function(event){
     return({
       viewMode: false})
@@ -26,25 +28,23 @@ var TripList = React.createClass({
     var savedTrips = this.props.trips.map((trip) => {
       return <TripListDetail key={trip.tripName} trip={trip} changeView={this.loadTrip} />
     });
-
     return (
-      <div>
       <div className="saved-display">
-      <h1>Saved Trips</h1>
-          {savedTrips}
-      </div>
+        <h1>Saved Trips</h1>
+        {savedTrips}
       </div>
     )
   }
 
 });
 
+
 var mapStateToProps = function(state, props) {
-    return {
-      googleID: state.googleID,
-      trips: state.trips,
-      searchResults: state.searchResults
-    };
+  return {
+    googleID: state.googleID,
+    trips: state.trips,
+    searchResults: state.searchResults
+  };
 };
 
 var Container = connect(mapStateToProps)(TripList);

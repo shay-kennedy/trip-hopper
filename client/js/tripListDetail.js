@@ -4,7 +4,9 @@ var connect = require('react-redux').connect;
 var actions = require('./redux/actions');
 var Link = require('react-router').Link;
 
+
 var TripListDetail = React.createClass({
+  
   componentDidMount: function() {
     this.props.dispatch(actions.fetchUser());
   },
@@ -25,12 +27,13 @@ var TripListDetail = React.createClass({
 
 });
 
+
 var mapStateToProps = function(state, props) {
-    return {
-      googleID: state.googleID,
-      trips: state.trips,
-      activeTrip: state.activeTrip
-    };
+  return {
+    googleID: state.googleID,
+    trips: state.trips,
+    activeTrip: state.activeTrip
+  };
 };
 
 var Container = connect(mapStateToProps)(TripListDetail);

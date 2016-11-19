@@ -4,7 +4,7 @@
 $gtMobile: min-width 50em 12 !default;
 
 html {
-  background-image: url("../assets/skyline.jpg");
+  background-image: url("../assets/skyline-original.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -13,8 +13,9 @@ html {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 5em;
 }
 
 h1 {

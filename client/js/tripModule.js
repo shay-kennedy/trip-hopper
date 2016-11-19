@@ -8,21 +8,25 @@ var TripSaveLoad = require('./tripSaveLoad');
 
 
 var TripModule = React.createClass({
+  
   render: function(props){
     return (
-    <div className="trip-module">
-      <TripDisplay />
-      <TripSaveLoad />
-    </div>)
+      <div className="trip-module">
+        <TripDisplay />
+        <TripSaveLoad />
+      </div>
+    )
   }
+
 });
 
+
 var mapStateToProps = function(state, props) {
-    return {
-      googleID: state.googleID,
-      trips: state.trips,
-      searchResults: state.searchResults
-    };
+  return {
+    googleID: state.googleID,
+    trips: state.trips,
+    searchResults: state.searchResults
+  };
 };
 
 var Container = connect(mapStateToProps)(TripModule);

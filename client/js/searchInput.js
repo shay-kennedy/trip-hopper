@@ -3,16 +3,8 @@ var ReactDOM = require('react-dom');
 var connect = require('react-redux').connect;
 var actions = require('./redux/actions');
 
+
 var SearchInput = React.createClass({
-  getInitialState: function(event){
-    return ({
-      optionSelected: '__'
-    })
-  },
-
-  optionChange: function(event){
-
-  },
 
   submitSearch: function(event){
     event.preventDefault();
@@ -29,19 +21,12 @@ var SearchInput = React.createClass({
           <input type="text" placeholder="In location..." name="searchLocation" id="searchLocation" className="text input-text" autoComplete="off" required ref="inputLocation" />
           <input type="submit" className="search-button" name="submit" value="Search"/>
         </form>
-      {/*<div>
-       <select onChange={this.optionChange} value={this.state.optionSelected}>
-          <option value="__">Choose an option...</option>
-          <option value="restaurants">Restaurants</option>
-          <option value="cafes">Cafes</option>
-          <option value="hotels">Hotels</option>
-          <option value="entertainment">entertainment</option>
-        </select> in Location...
-      </div>*/}
       </div>
     )
   }
+
 });
+
 
 var mapStateToProps = function(state, props) {
     return {
@@ -50,7 +35,6 @@ var mapStateToProps = function(state, props) {
       searchResults: state.searchResults
     };
 };
-
 
 var Container = connect(mapStateToProps)(SearchInput);
 
