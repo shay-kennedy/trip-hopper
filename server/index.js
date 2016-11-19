@@ -11,10 +11,10 @@ var config = require('../config')
 
 
 var yelp = new Yelp({
-  consumer_key: process.env.consumer_key || config.yelp.consumer_key,
-  consumer_secret: process.env.consumer_secret || config.yelp.consumer_secret,
-  token: process.env.token || config.yelp.token,
-  token_secret: process.env.token_secret || config.yelp.token_secret
+  consumer_key: process.env.CONSUMER_KEY || config.yelp.consumer_key,
+  consumer_secret: process.env.CONSUMER_SECRET || config.yelp.consumer_secret,
+  token: process.env.TOKEN || config.yelp.token,
+  token_secret: process.env.TOKEN_SECRET || config.yelp.token_secret
 });
 
 const HOST = process.env.HOST;
