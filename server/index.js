@@ -7,7 +7,7 @@ var Yelp = require('yelp');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var BearerStrategy = require('passport-http-bearer').Strategy;
 var passport = require("passport");
-var config = require('../config')
+// var config = require('../config')
 
 
 var yelp = new Yelp({
