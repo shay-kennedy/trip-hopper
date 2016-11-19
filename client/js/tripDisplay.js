@@ -32,7 +32,8 @@ var TripDisplay = React.createClass({
       <div>
         <div className="trip-display-header">
           <h1>{this.props.trip.tripName}</h1>
-          <Link to="/planner/triplist"><input className="delete-trip" onClick={this.deleteTrip} type="button" name="rename" value="Delete Trip" /></Link>
+          <Link to="/planner/addpoi"><input className="delete-trip" type="button" value="Add to Trip" /></Link>
+          <Link to="/planner/triplist"><input className="delete-trip" onClick={this.deleteTrip} type="button" name="rename" value="Delete this Trip" /></Link>
         </div>
         <div className="trip-module">
           {tripPoiList}

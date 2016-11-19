@@ -8,6 +8,9 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var BearerStrategy = require('passport-http-bearer').Strategy;
 var passport = require("passport");
 
+try {
+  var config = require('../config');
+} catch (e) {};
 
 var yelp = new Yelp({
   consumer_key: process.env.CONSUMER_KEY || config.yelp.consumer_key,
@@ -37,10 +40,6 @@ app.get("/", function(req, res){
 
 //User model schema
 var User = require('./models/users');
-
-try {
-  var config = require('../config');
-} catch (e) {};
 
 // Google OAuth Strategy
 passport.use(new GoogleStrategy({
