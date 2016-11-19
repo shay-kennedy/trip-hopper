@@ -1,18 +1,26 @@
 <!doctype HTML>
+<html lang="en">
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<script src="./assets/pace/pace.js"></script>
-<link href="./assets/pace/themes/pace-theme-mac-osx-motion.css" rel="stylesheet" />
-<title>Trip Hopper - A Trip Planning App</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Trip Hopper - A Trip Planning App</title>
 
-<link rel="stylesheet" href="css/{{name}}.{{version}}{{#production}}.min{{/production}}.css">
+	<link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<script src="./assets/pace/pace.js"></script>
+	<link href="./assets/pace/themes/pace-theme-mac-osx-motion.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/{{name}}.{{version}}{{#production}}.min{{/production}}.css">
+</head>
+<body>
+	
+	<main>
+		<div id="app"></div>
+	</main>
 
-<div id="app"></div>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9lR5coiYOlLkJ1N_s4Ag3mYCH_KIYe9U"></script>
+	<script src="js/{{name}}.{{version}}{{#production}}.min{{/production}}.js"></script>
+</body>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9lR5coiYOlLkJ1N_s4Ag3mYCH_KIYe9U"></script>
-
-<script src="js/{{name}}.{{version}}{{#production}}.min{{/production}}.js"></script>
-
+</html>
