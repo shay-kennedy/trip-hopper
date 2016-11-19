@@ -9,7 +9,6 @@ var BearerStrategy = require('passport-http-bearer').Strategy;
 var passport = require("passport");
 var config = require('../config')
 
-dotenv.load();
 
 var yelp = new Yelp({
   consumer_key: process.env.consumer_key || config.yelp.consumer_key,
