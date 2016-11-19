@@ -6,27 +6,32 @@ var actions = require('./redux/actions');
 var PoiSearchInput = require('./poiSearchInput');
 var SearchResults = require('./searchResults');
 
+
 var SearchModule = React.createClass({
+  
   componentDidMount: function(){
     this.props.dispatch(actions.fetchUser());
   },
 
   render: function(props){
     return (
-    <div className="search-module">
-    <h1>Add Hop Spot</h1>
-      <PoiSearchInput />
-      <SearchResults />
-    </div> );
+      <div className="search-module">
+        <h1>Add Hop Spot</h1>
+        <PoiSearchInput />
+        <SearchResults />
+      </div> 
+    );
   }
+
 });
 
+
 var mapStateToProps = function(state, props) {
-    return {
-      googleID: state.googleID,
-      trips: state.trips,
-      searchResults: state.searchResults
-    };
+  return {
+    googleID: state.googleID,
+    trips: state.trips,
+    searchResults: state.searchResults
+  };
 };
 
 

@@ -7,6 +7,7 @@ var Link = require('react-router').Link;
 
 
 var TripDisplay = React.createClass({
+  
   componentWillMount: function() {
     this.props.dispatch(actions.fetchUser());
   },
@@ -23,11 +24,9 @@ var TripDisplay = React.createClass({
         </div>
       )
     }
-
     var tripPoiList = this.props.trip.pois.map((poidata) => {
       return (<TripDisplayDetail key={poidata.id} poi={poidata} />)
     });
-
     return (
       <div>
         <div className="trip-display-header">
@@ -40,9 +39,10 @@ var TripDisplay = React.createClass({
         </div>
       </div>
     )
-
   }
+
 });
+
 
 var mapStateToProps = function(state, props) {
   return {

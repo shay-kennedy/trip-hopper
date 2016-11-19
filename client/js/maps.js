@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 
 
-
 export default (props) => {
-    return(
-      <div className="map-display">
+  return(
+    <div className="map-display">
       <GoogleMapLoader
         containerElement={ <div style={{height: '200px'}} /> }
         googleMapElement={
@@ -14,6 +13,6 @@ export default (props) => {
           </GoogleMap>
         }
       />
-      </div>
-    )
-  }
+    </div>
+  )
+}

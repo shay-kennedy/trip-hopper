@@ -12,6 +12,20 @@ try {
   var config = require('../config');
 } catch (e) {};
 
+const HOST = process.env.HOST;
+const PORT = process.env.PORT || 8080;
+const app = express();
+
+app.use(passport.initialize());
+app.use(jsonParser.json());
+app.use(express.static(process.env.CLIENT_PATH));
+console.log(`Server running in ${process.env.NODE_ENV} mode`);
+
+var db = process.env.DBPATH || config.mongoDB.dbPath;
+mongoose.connect(db);
+
+
+// Yelp API credentials/configuration
 var yelp = new Yelp({
   consumer_key: process.env.CONSUMER_KEY || config.yelp.consumer_key,
   consumer_secret: process.env.CONSUMER_SECRET || config.yelp.consumer_secret,
@@ -19,27 +33,10 @@ var yelp = new Yelp({
   token_secret: process.env.TOKEN_SECRET || config.yelp.token_secret
 });
 
-const HOST = process.env.HOST;
-const PORT = process.env.PORT || 8080;
-
-var db = process.env.DBPATH || config.mongoDB.dbPath;
-mongoose.connect(db);
-console.log(`Server running in ${process.env.NODE_ENV} mode`);
-
-const app = express();
-
-app.use(passport.initialize());
-app.use(jsonParser.json());
-app.use(express.static(process.env.CLIENT_PATH));
-
-
-app.get("/", function(req, res){
-  res.send("Hello World");
-})
-
 
 //User model schema
 var User = require('./models/users');
+
 
 // Google OAuth Strategy
 passport.use(new GoogleStrategy({
@@ -47,8 +44,7 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.CLIENTSECRET || config.googleAuth.clientSecret,
   callbackURL: process.env.CALLBACKURL || config.googleAuth.callbackURL,
   },
-
-function(accessToken, refreshToken, profile, done) {
+  function(accessToken, refreshToken, profile, done) {
     User.findOne({googleID: profile.id}, function(err, user) {
       if (!user) {
         User.create({
@@ -63,7 +59,8 @@ function(accessToken, refreshToken, profile, done) {
         return done(err, user);
       }
     });
-}));
+  }
+));
 
 app.get('/auth/google',
   passport.authenticate('google', {
@@ -81,11 +78,11 @@ app.get('/auth/google/callback',
   }
 );
 
-//Is this all that we need?
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
+
 
 // Bearer Strategy
 passport.use(new BearerStrategy(
@@ -93,18 +90,19 @@ passport.use(new BearerStrategy(
   User.findOne({ accessToken: token },
     function(err, user) {
       if(err) {
-          return done(err)
+        return done(err)
       }
       if(!user) {
-          return done(null, false)
+        return done(null, false)
       }
       return done(null, user, { scope: 'read' })
     }
   );
-}
+  }
 ));
 
-//confirm user authentication/creation
+
+// GET: Retreive user information
 app.get('/user', passport.authenticate('bearer', {session: false}), function(req, res) {
   var googleID = req.user.googleID;
   User.findOne({googleID: googleID}, function(err, user) {
@@ -116,8 +114,7 @@ app.get('/user', passport.authenticate('bearer', {session: false}), function(req
   });
 });
 
-
-//Yelp request endpoint
+// GET: Yelp API search request
 app.get('/api/:term', function(req, res) {
   let term = req.params.term;
   let location = req.query.location;
@@ -173,7 +170,6 @@ app.delete('/user/removeTrip/:googleID', passport.authenticate('bearer', {sessio
         return res.json(user);
       });
   });
-
 
 // PUT: add pois to existing trips
 app.put('/user/trips/:googleID/:_id', passport.authenticate('bearer', {session: false}),

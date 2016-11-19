@@ -5,10 +5,8 @@ var actions = require('./redux/actions');
 var Link = require('react-router').Link;
 import GoogleMap from './maps'
 
+
 var SearchDetail = React.createClass({
-  // componentDidMount: function() {
-  //   this.props.dispatch(actions.fetchUser());
-  // },
 
   addPoi: function(){
     this.props.dispatch(actions.addPoi(this.props.activeTrip, this.props, this.props.googleID));
@@ -20,11 +18,9 @@ var SearchDetail = React.createClass({
       return;
     };
     this.props.dispatch(actions.addTrip(tripName, this.props, this.props.googleID));
-    // this.props.dispatch(actions.setActiveTrip(tripName));
   },
 
   render: function(props){
-    console.log('SEARCHPOI ', this.props.poi);
     return (
       <div className="poi-entry">
         <div className="poi-img"><img src={this.props.poi.image_url} /></div>
@@ -38,12 +34,13 @@ var SearchDetail = React.createClass({
 
 });
 
+
 var mapStateToProps = function(state, props) {
-    return {
-      googleID: state.googleID,
-      trips: state.trips,
-      activeTrip: state.activeTrip
-    };
+  return {
+    googleID: state.googleID,
+    trips: state.trips,
+    activeTrip: state.activeTrip
+  };
 };
 
 var Container = connect(mapStateToProps)(SearchDetail);
