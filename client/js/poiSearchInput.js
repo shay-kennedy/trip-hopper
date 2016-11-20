@@ -19,8 +19,12 @@ var PoiSearchInput = React.createClass({
     return (
       <div>
         <form onSubmit={this.submitSearch}>
-          <input type="text" placeholder="Search for..." name="searchText" id="searchText" className="text input-text" autoComplete="off" required ref="inputText" />
-          <input type="submit" id="inputButton" className="button btn btn-primary search-button" name="submit" value="Search"/>
+          <div>
+            <input type="text" placeholder="Search for..." name="searchText" id="searchText" className="text input-text" autoComplete="off" required ref="inputText" />
+          </div>
+          <div>
+            <input type="submit" id="inputButton" className="button btn btn-primary search-button" name="submit" value="Search"/>
+          </div>
         </form>
       </div>
     )

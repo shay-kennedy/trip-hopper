@@ -6,11 +6,15 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-attachment: fixed;
   font-family: 'Open Sans', sans-serif;
   margin: auto;
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 
 h1 {
@@ -35,12 +39,12 @@ a h1 {
 }
 
 a:hover {
-  color: black;
+  color: #242424;
 }
 
 a {
   text-decoration: none;
-  color: dimgrey;
+  color: #242424;
 }
 
 input[type=button] {
@@ -96,6 +100,7 @@ input[type=button]:focus, input[type=text]:focus {
 
 .search-button {
   cursor: pointer;
+  margin-top: .5em;
   font-size: 1em;
   border: none;
   color: #242424;
@@ -164,7 +169,7 @@ input[type=button]:focus, input[type=text]:focus {
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
   overflow: hidden;
-  padding: 1em 0;
+  padding: 1em;
   min-height: 20em;
 }
 
@@ -200,12 +205,12 @@ input[type=button]:focus, input[type=text]:focus {
   @include clearfix;
   display:block;
   input[type=button] {
-  font-size:.75em;
-  color: #242424;
-  float: right;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
+    font-size:.75em;
+    color: #242424;
+    float: right;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
     &:hover {
       background-color: rgba(255, 102, 102, 0.95);
     }
@@ -330,3 +335,24 @@ input[type=button]:focus, input[type=text]:focus {
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .single-nav, .double-nav {
+    @include span-columns(12);
+    @include clearfix;
+    margin: auto;
+    a {
+      @include span-columns(6);
+      @include shift(3);
+    }
+  }
+  .double-nav a {
+    @include shift(0);
+  }
+  .search-module, .trip-module, .saved-display, .trip-display {
+    @include span-columns(12);
+    width: 100%;
+    margin: auto;
+  }
+}
+
