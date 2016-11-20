@@ -19,7 +19,7 @@ function PlannerLanding () {
         </div>
         <div id="planner-landing-links" className="double-nav">
           <Link to="/planner/triplist"><div>View Trips</div></Link>
-          <Link to="/planner/newtrip"><div>Start New Trip</div></Link>
+          <Link to="/planner/newtrip"><div>Start Trip</div></Link>
         </div>
       </div>
     </div>
