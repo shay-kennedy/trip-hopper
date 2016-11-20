@@ -359,7 +359,9 @@ input[type=button]:focus, input[type=text]:focus {
 @media screen and (max-width:768px){
   body {
     /*background-size: contain;*/
-    position: absolute;
+    /*position: absolute;*/
+    background-size: auto 100%;
+    background-position: center center;
   }
 }
 
