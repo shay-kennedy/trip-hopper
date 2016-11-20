@@ -15,18 +15,29 @@ var TripDisplayDetail = React.createClass({
     this.props.dispatch(actions.removePoi(this.props.googleID, this.props.activeTrip, this.props.poi));
   },
 
-  selectPoi: function(event){
-    console.log("Selected " + this.props.poi.name);
-  },
-
   render: function(props){
     return (
-      <div className="trip-poi poi-entry" onClick={this.selectPoi}>
-        <div className="poi-img"><img src={this.props.poi.image_url} /></div>
-        <div className="poi-name"><a href={this.props.poi.url} target="_blank">{this.props.poi.name}</a> <img src={this.props.poi.rating_img_url} /></div>
-        <div className="poi-location">{this.props.poi.location[0]}, {this.props.poi.location[1]}</div>
-        <GoogleMap lat={this.props.poi.coordinate.latitude} lng={this.props.poi.coordinate.longitude}/>
-        <input type="button" onClick={this.deletePoi} className="delete-poi" value="Delete" />
+      <div className="trip-poi poi-entry">
+        <div className="poi-detail-top">
+          <div className="poi-img">
+            <img src={this.props.poi.image_url} />
+          </div>
+          <div className="poi-name">
+            <a href={this.props.poi.url} target="_blank">{this.props.poi.name}</a>
+          </div>
+          <div className="poi-location">
+            <div>{this.props.poi.location[0]}</div>
+            <div>{this.props.poi.location[1]}</div>
+            <div>{this.props.poi.location[2]}</div>
+          </div>
+          <img src={this.props.poi.rating_img_url} />
+          <div className="poi-remove">
+            <input type="button" onClick={this.deletePoi} className="delete-poi" value="Remove" />
+          </div>
+        </div>
+        <div className="poi-detail-bottom">
+          <GoogleMap lat={this.props.poi.coordinate.latitude} lng={this.props.poi.coordinate.longitude}/>
+        </div>       
       </div>
     );
   }
