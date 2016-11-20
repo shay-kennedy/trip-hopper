@@ -17,9 +17,13 @@ var SearchInput = React.createClass({
     return (
       <div>
         <form onSubmit={this.submitSearch}>
-          <input type="text" placeholder="Search for..." name="searchText" id="searchText" className="text input-text" autoComplete="off" required ref="inputText" />
-          <input type="text" placeholder="In location..." name="searchLocation" id="searchLocation" className="text input-text" autoComplete="off" required ref="inputLocation" />
-          <input type="submit" className="search-button" name="submit" value="Search"/>
+          <div>
+            <input type="text" placeholder="Search for..." name="searchText" id="searchText" className="text input-text" autoComplete="off" required ref="inputText" />
+            <input type="text" placeholder="In location..." name="searchLocation" id="searchLocation" className="text input-text" autoComplete="off" required ref="inputLocation" />
+          </div>
+          <div>
+            <input type="submit" className="search-button" name="submit" value="Search"/>
+          </div>
         </form>
       </div>
     )

@@ -18,7 +18,7 @@ function PlannerLanding () {
           <p>Trip Hopper uses your previous location as you search and add to your trip, so you can easily hop from place to place.</p>
         </div>
         <div id="planner-landing-links" className="double-nav">
-          <Link to="/planner/triplist"><div>View Saved Trip</div></Link>
+          <Link to="/planner/triplist"><div>View Trips</div></Link>
           <Link to="/planner/newtrip"><div>Start New Trip</div></Link>
         </div>
       </div>
