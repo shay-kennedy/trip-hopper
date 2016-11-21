@@ -12,14 +12,6 @@ var SearchDetail = React.createClass({
     this.props.dispatch(actions.addPoi(this.props.activeTrip, this.props, this.props.googleID));
   },
 
-  addTrip: function(){
-    var tripName = prompt('Enter trip name');
-    if (tripName == null) {
-      return;
-    };
-    this.props.dispatch(actions.addTrip(tripName, this.props, this.props.googleID));
-  },
-
   render: function(props){
     console.log('HERE', this.props.poi);
     return (
