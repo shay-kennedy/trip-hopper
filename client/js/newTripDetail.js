@@ -8,10 +8,6 @@ import GoogleMap from './maps'
 
 var NewTripDetail = React.createClass({
 
-  addPoi: function(){
-    this.props.dispatch(actions.addPoi(this.props.activeTrip, this.props, this.props.googleID));
-  },
-
   addTrip: function(){
     var tripName = prompt('Enter trip name');
     if (tripName == null) {
