@@ -1,8 +1,7 @@
-var mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
 
-var UserSchema = new mongoose.Schema({
-  
+const UserSchema = new mongoose.Schema({
   googleID: {
     type: String,
     index: true
@@ -18,9 +17,9 @@ var UserSchema = new mongoose.Schema({
   activeTrip: {
     type: String
   }
+})
 
-});
 
+const User = mongoose.model('User', UserSchema)
 
-var User = mongoose.model('User', UserSchema);
-module.exports = User;
+export default User
