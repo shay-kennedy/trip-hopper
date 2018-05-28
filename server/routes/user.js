@@ -82,7 +82,7 @@ router.delete('/poi/:_id',
   }
 )
 
-app.put('/active_trip/:_id',
+app.put('/active/:_id',
   passport.authenticate('bearer', { session: false }),
   function (req, res) {
     User.findOneAndUpdate(
