@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
+import React from 'react'
+import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 
 
-export default (props) => {
+ const Map = (props) => {
   return(
     <div className="map-display">
       <GoogleMapLoader
@@ -16,3 +16,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default Map

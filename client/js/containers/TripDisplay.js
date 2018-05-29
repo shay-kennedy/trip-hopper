@@ -1,25 +1,23 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var connect = require('react-redux').connect;
-var actions = require('./redux/actions');
-var Link = require('react-router').Link;
-
-var TripDisplayDetail = require('./tripDisplayDetail');
-var PlannerHeader = require('./plannerHeader');
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import { PlannerHeader } from '../components'
+import { TripDisplayDetail } from '../containers'
+var actions = require('../redux/actions')
 
 
-
-var TripDisplay = React.createClass({
-  
-  componentWillMount: function() {
-    this.props.dispatch(actions.fetchUser());
-  },
-
-  deleteTrip: function(){
-    this.props.dispatch(actions.removeTrip(this.props.googleID, this.props.activeTrip));
-  },
-
-  render: function(props){
+export class TripDisplay extends Component {
+  constructor(props) {
+    super(props)
+    this.deleteTrip = this.deleteTrip.bind(this)
+  }
+  componentDidMount() {
+    this.props.dispatch(actions.fetchUser())
+  }
+  deleteTrip() {
+    this.props.dispatch(actions.removeTrip(this.props.googleID, this.props.activeTrip))
+  }
+  render() {
     if (this.props.activeTrip == null) {
       return (
         <div>
@@ -29,11 +27,11 @@ var TripDisplay = React.createClass({
     }
     var tripPoiList = this.props.trip.pois.map((poidata) => {
       return (<TripDisplayDetail key={poidata.id} poi={poidata} />)
-    });
+    })
     return (
       <div className="trip-display">
         <PlannerHeader />
-        <div className="double-nav"> 
+        <div className="double-nav">
           <Link to="/planner/triplist"><div>Trips List</div></Link>
           <Link to="/planner/newtrip"><div>New Trip</div></Link>
         </div>
@@ -48,23 +46,19 @@ var TripDisplay = React.createClass({
       </div>
     )
   }
+}
 
-});
 
-
-var mapStateToProps = function(state, props) {
+const mapStateToProps = ({reducer}) => {
   return {
-    googleID: state.googleID,
-    trip: state.trips.find((trip) => {
-      if(state.activeTrip == trip._id) {
+    googleID: reducer.googleID,
+    trip: reducer.trips.find((trip) => {
+      if(reducer.activeTrip == trip._id) {
         return trip
       }
     }),
-    searchResults: state.searchResults,
-    activeTrip: state.activeTrip
-  };
-};
+    activeTrip: reducer.activeTrip
+  }
+}
 
-var Container = connect(mapStateToProps)(TripDisplay);
-
-module.exports = Container;
+export default connect(mapStateToProps)(TripDisplay)

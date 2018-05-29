@@ -1,11 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var connect = require('react-redux').connect;
-var actions = require('./redux/actions');
-var Link = require('react-router').Link;
+import React from 'react'
+import { Link } from 'react-router'
 
 
-function PlannerLanding () {
+const PlannerLanding = () => {
   return (
     <div id="planner-landing-container">
       <div className="header">
@@ -24,7 +21,6 @@ function PlannerLanding () {
       </div>
     </div>
   )
-};
+}
 
-
-module.exports = PlannerLanding;
+export default PlannerLanding

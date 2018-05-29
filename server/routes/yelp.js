@@ -20,11 +20,15 @@ router.get('/:term',
     const { location, cll } = req.query
     const query = {
       term,
-      location,
-      cll,
       sort: '1',
       limit: '3',
       radius_filter: '9000',
+    }
+    if (location) {
+      query.location = location
+    }
+    if (cll) {
+      query.cll = cll
     }
     yelp.search(query)
       .then(data => res.send(data))
