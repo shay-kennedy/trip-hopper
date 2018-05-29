@@ -10,10 +10,10 @@ export class TripListDetail extends Component {
     this.loadTrip = this.loadTrip.bind(this)
   }
   componentDidMount() {
-    this.props.dispatch(actions.fetchUser())
+    this.props.fetchUser()
   }
   loadTrip() {
-    this.props.dispatch(actions.setActiveTrip(this.props.trip._id))
+    this.props.setActiveTrip(this.props.trip._id)
     this.props.changeView()
   }
   render() {
@@ -34,12 +34,11 @@ export class TripListDetail extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    googleID: state.googleID,
-    trips: state.trips,
-    activeTrip: state.activeTrip
+    fetchUser: () => { dispatch(actions.fetchUser()) },
+    setActiveTrip: (tripId) => { dispatch(actions.setActiveTrip(tripId)) },
   }
 }
 
-export default connect(mapStateToProps)(TripListDetail)
+export default connect(null, mapDispatchToProps)(TripListDetail)

@@ -22,7 +22,7 @@ router.get('/',
   }
 )
 
-router.put('trips',
+router.put('/trips',
   passport.authenticate('bearer', { session: false }),
   function (req, res) {
     User.findOneAndUpdate(

@@ -12,7 +12,7 @@ export class SearchInput extends Component {
     event.preventDefault()
     var searchText = this.refs.inputText.value
     var searchLocation = this.refs.inputLocation.value
-    this.props.dispatch(actions.poiSearch(searchText, searchLocation))
+    this.props.search(searchText, searchLocation)
   }
   render() {
     return (
@@ -32,12 +32,10 @@ export class SearchInput extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    googleID: state.googleID,
-    trips: state.trips,
-    searchResults: state.searchResults
+    search: (searchText, location) => { dispatch(actions.poiSearch(searchText, location)) },
   }
 }
 
-export default connect(mapStateToProps)(SearchInput)
+export default connect(null, mapDispatchToProps)(SearchInput)

@@ -14,7 +14,7 @@ export class PoiSearchInput extends Component {
     const lastPoi = this.props.trip.pois[this.props.trip.pois.length - 1]
     const searchLocation = lastPoi.location
     const cll = lastPoi.coordinate.latitude + ',' + lastPoi.coordinate.longitude
-    this.props.dispatch(actions.poiSearch(searchText, searchLocation, cll))
+    this.props.search(searchText, searchLocation, cll)
   }
   render() {
     return (
@@ -33,17 +33,23 @@ export class PoiSearchInput extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = ({reducer}) => {
   return {
-    googleID: state.googleID,
-    trips: state.trips,
-    searchResults: state.searchResults,
-    trip: state.trips.find((trip) => {
-      if(state.activeTrip == trip._id) {
+    googleID: reducer.googleID,
+    trips: reducer.trips,
+    searchResults: reducer.searchResults,
+    trip: reducer.trips.find((trip) => {
+      if(reducer.activeTrip == trip._id) {
         return trip
       }
     })
   }
 }
 
-export default connect(mapStateToProps)(PoiSearchInput)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    search: (searchText, location, cll) => { dispatch(actions.poiSearch(searchText, location, cll)) },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PoiSearchInput)

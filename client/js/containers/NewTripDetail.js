@@ -6,12 +6,16 @@ var actions = require('../redux/actions')
 
 
 export class NewTripDetail extends Component {
-  addTrip() {
+  constructor(props) {
+    super(props)
+    this.addNewTrip = this.addNewTrip.bind(this)
+  }
+  addNewTrip() {
     var tripName = prompt('Enter trip name')
     if (tripName == null) {
       return
     }
-    this.props.dispatch(actions.addTrip(tripName, this.props, this.props.googleID))
+    this.props.addTrip(tripName, this.props, this.props.googleID)
   }
   render() {
     return (
@@ -30,7 +34,7 @@ export class NewTripDetail extends Component {
           </div>
           <img src={this.props.poi.rating_img_url} />
           <div className="add-poi">
-            <Link to="/planner/viewtrip"><input type="button" className="start-trip" onClick={this.addTrip} value="Start New Trip" /></Link>
+            <Link to="/planner/viewtrip"><input type="button" className="start-trip" onClick={this.addNewTrip} value="Start New Trip" /></Link>
           </div>
         </div>
         <div className="poi-detail-bottom">
@@ -48,4 +52,10 @@ const mapStateToProps = ({reducer}) => {
   }
 }
 
-export default connect(mapStateToProps)(NewTripDetail)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTrip: (tripName, tripData, googleID) => { dispatch(actions.addTrip(tripName, tripData, googleID)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTripDetail)
