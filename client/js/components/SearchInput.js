@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-var actions = require('./redux/actions')
+var actions = require('../redux/actions')
 
 
 export class SearchInput extends Component {

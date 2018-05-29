@@ -1,5 +1,5 @@
-export GoogleMap from './GoogleMap'
 export Landing from './Landing'
+export Map from './Map'
 export PlannerHeader from './PlannerHeader'
 export PlannerLanding from './PlannerLanding'
 export PoiSearchInput from './PoiSearchInput'

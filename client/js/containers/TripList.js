@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { TripListDetail, PlannerHeader } from '../components'
-var actions = require('./redux/actions')
+var actions = require('../redux/actions')
 
 
 export class TripList extends Component {

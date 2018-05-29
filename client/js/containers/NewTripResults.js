@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NewTripDetail } from './containers'
-var actions = require('./redux/actions')
+import { NewTripDetail } from '../containers'
+var actions = require('../redux/actions')
 
 
 export class newTripResults extends Component {

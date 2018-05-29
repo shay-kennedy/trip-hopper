@@ -1,3 +1,4 @@
+export Main from './Main'
 export NewTripDetail from './NewTripDetail'
 export NewTripModule from './NewTripModule'
 export NewTripResults from './NewTripResults'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { TripDisplay, TripSaveLoad } from './containers'
+import { TripDisplay, TripSaveLoad } from '../containers'
 
 
 const TripModule = () => {

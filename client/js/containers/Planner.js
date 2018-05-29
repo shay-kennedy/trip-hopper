@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PlannerLanding } from '../components'
-import { SearchModule, TripModule } from './containers'
-var actions = require('./redux/actions')
+import { SearchModule, TripModule } from '../containers'
+var actions = require('../redux/actions')
 
 
 export class Planner extends Component {

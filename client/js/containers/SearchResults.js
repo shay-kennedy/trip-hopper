@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { SearchDetail } from './containers'
-var actions = require('./redux/actions')
+import { SearchDetail } from '../containers'
+var actions = require('../redux/actions')
 
 
 export class SearchResults extends Component {

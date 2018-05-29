@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { PoiSearchInput, PlannerHeader } from '../components'
-import { SearchResults } from './containers'
-var actions = require('./redux/actions')
+import { SearchResults } from '../containers'
+var actions = require('../redux/actions')
 
 
 export class SearchModule extends Component {

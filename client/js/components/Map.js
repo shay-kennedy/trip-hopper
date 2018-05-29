@@ -2,7 +2,7 @@ import React from 'react'
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 
 
- const GoogleMap = (props) => {
+ const Map = (props) => {
   return(
     <div className="map-display">
       <GoogleMapLoader
@@ -17,4 +17,4 @@ import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
   )
 }
 
-export default GoogleMap
+export default Map

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { GoogleMap } from '../components'
-var actions = require('./redux/actions')
+import { Map } from '../components'
+var actions = require('../redux/actions')
 
 
 export class NewTripDetail extends Component {
@@ -34,7 +34,7 @@ export class NewTripDetail extends Component {
           </div>
         </div>
         <div className="poi-detail-bottom">
-          <GoogleMap lat={this.props.poi.location.coordinate.latitude} lng={this.props.poi.location.coordinate.longitude}/>
+          <Map lat={this.props.poi.location.coordinate.latitude} lng={this.props.poi.location.coordinate.longitude}/>
         </div>
       </div>
     )
