@@ -25,7 +25,6 @@ export class TripList extends Component {
     })
   }
   render() {
-    console.log(this.props)
     var savedTrips = this.props.trips.map((trip) => {
       return <TripListDetail key={trip.tripName} trip={trip} changeView={this.loadTrip} />
     })

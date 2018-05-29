@@ -10,7 +10,6 @@ export class Planner extends Component {
   	this.props.fetchUser()
   }
   render() {
-    console.log(this.props)
     return (
       <div>
         <div className="container">

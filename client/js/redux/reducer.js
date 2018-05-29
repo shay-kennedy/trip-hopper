@@ -18,7 +18,6 @@ export default function reducer(state, action) {
 
 		// Updates state upon fetch user success
 		case actions.FETCH_USER_SUCCESS:
-			// console.log('FETCH_USER_SUCCESS')
 			var user = action.user
 			var newState = Object.assign({}, state, {
 				googleID: user.googleID,
@@ -28,12 +27,10 @@ export default function reducer(state, action) {
 			return newState
 
 		case actions.FETCH_USER_ERROR:
-			// console.log('FETCH_USER_ERROR')
 			return state
 
 		// Updates state upon location trail search
 		case actions.FETCH_POI_SUCCESS:
-			console.log("FETCH_POI_SUCCESS")
 			var searchRes = action.searchResults.businesses
 			var newState = Object.assign({}, state, {
 				searchResults: searchRes
@@ -41,7 +38,6 @@ export default function reducer(state, action) {
 			return newState
 
 		case actions.FETCH_POI_ERROR:
-			// console.log('FETCH_POI_ERROR')
 			return state
 
 	}
