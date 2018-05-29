@@ -1,22 +1,19 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var connect = require('react-redux').connect;
-var actions = require('./redux/actions');
-var Link = require('react-router').Link;
-import GoogleMap from './maps'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import { GoogleMap } from '../components'
+var actions = require('./redux/actions')
 
 
-var NewTripDetail = React.createClass({
-
-  addTrip: function(){
-    var tripName = prompt('Enter trip name');
+export class NewTripDetail extends Component {
+  addTrip() {
+    var tripName = prompt('Enter trip name')
     if (tripName == null) {
-      return;
-    };
-    this.props.dispatch(actions.addTrip(tripName, this.props, this.props.googleID));
-  },
-
-  render: function(props){
+      return
+    }
+    this.props.dispatch(actions.addTrip(tripName, this.props, this.props.googleID))
+  }
+  render() {
     return (
       <div className="poi-entry">
         <div className="poi-detail-top">
@@ -42,18 +39,15 @@ var NewTripDetail = React.createClass({
       </div>
     )
   }
+}
 
-});
 
-
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     googleID: state.googleID,
     trips: state.trips,
     activeTrip: state.activeTrip
-  };
-};
+  }
+}
 
-var Container = connect(mapStateToProps)(NewTripDetail);
-
-module.exports = Container;
+export default connect(mapStateToProps)(NewTripDetail)

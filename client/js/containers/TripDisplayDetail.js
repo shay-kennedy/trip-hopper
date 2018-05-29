@@ -1,21 +1,21 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var connect = require('react-redux').connect;
-var actions = require('./redux/actions');
-import GoogleMap from './maps'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { GoogleMap } from '../components'
+var actions = require('./redux/actions')
 
 
-var TripDisplayDetail = React.createClass({
-  
-  componentDidMount: function() {
-    this.props.dispatch(actions.fetchUser());
-  },
-
-  deletePoi: function(){
-    this.props.dispatch(actions.removePoi(this.props.googleID, this.props.activeTrip, this.props.poi));
-  },
-
-  render: function(props){
+export class TripDisplayDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.deletePoi = this.deletePoi.bind(this)
+  }
+  componentDidMount() {
+    this.props.dispatch(actions.fetchUser())
+  }
+  deletePoi() {
+    this.props.dispatch(actions.removePoi(this.props.googleID, this.props.activeTrip, this.props.poi))
+  }
+  render() {
     return (
       <div className="trip-poi poi-entry">
         <div className="poi-detail-top">
@@ -37,22 +37,19 @@ var TripDisplayDetail = React.createClass({
         </div>
         <div className="poi-detail-bottom">
           <GoogleMap lat={this.props.poi.coordinate.latitude} lng={this.props.poi.coordinate.longitude}/>
-        </div>       
+        </div>
       </div>
-    );
+    )
   }
+}
 
-});
 
-
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     googleID: state.googleID,
     trips: state.trips,
     activeTrip: state.activeTrip
-  };
-};
+  }
+}
 
-var Container = connect(mapStateToProps)(TripDisplayDetail);
-
-module.exports = Container;
+export default connect(mapStateToProps)(TripDisplayDetail)

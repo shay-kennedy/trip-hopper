@@ -1,19 +1,19 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var connect = require('react-redux').connect;
-var actions = require('./redux/actions');
-var Link = require('react-router').Link;
-import GoogleMap from './maps'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import { GoogleMap } from '../components'
+var actions = require('./redux/actions')
 
 
-var SearchDetail = React.createClass({
-
-  addPoi: function(){
-    this.props.dispatch(actions.addPoi(this.props.activeTrip, this.props, this.props.googleID));
-  },
-
-  render: function(props){
-    console.log('HERE', this.props.poi);
+export class SearchDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.addPoi = this.addPoi.bind(this)
+  }
+  addPoi() {
+    this.props.dispatch(actions.addPoi(this.props.activeTrip, this.props, this.props.googleID))
+  }
+  render() {
     return (
       <div className="poi-entry">
         <div className="poi-detail-top">
@@ -39,18 +39,15 @@ var SearchDetail = React.createClass({
       </div>
     )
   }
+}
 
-});
 
-
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     googleID: state.googleID,
     trips: state.trips,
     activeTrip: state.activeTrip
-  };
-};
+  }
+}
 
-var Container = connect(mapStateToProps)(SearchDetail);
-
-module.exports = Container;
+export default connect(mapStateToProps)(SearchDetail)

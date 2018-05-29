@@ -1,33 +1,32 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var connect = require('react-redux').connect;
-var actions = require('./redux/actions');
-var TripListDetail = require('./tripListDetail');
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { TripListDetail } from '../components'
+var actions = require('./redux/actions')
 
 
-var TripSaveLoad = React.createClass({
-  
-  getInitialState: function(event){
-    return({
-      viewMode: false})
-  },
-
-  toggleViewTrips: function(event){
+export class TripSaveLoad extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      viewMode: false
+    }
+    this.toggleViewTrips = this.toggleViewTrips.bind(this)
+    this.loadTrip = this.loadTrip.bind(this)
+  }
+  toggleViewTrips() {
     this.setState({
       viewMode: !this.state.viewMode
-    });
-  },
-
-  loadTrip: function(event){
+    })
+  }
+  loadTrip() {
     this.setState({
       viewMode: false
-    });
-  },
-
-  render: function(props){
+    })
+  }
+  render() {
     var savedTrips = this.props.trips.map((trip) => {
       return <TripListDetail key={trip.tripName} trip={trip} changeView={this.loadTrip} />
-    });
+    })
     return (
       <div>
         <div className="saved-trips-button">
@@ -39,18 +38,15 @@ var TripSaveLoad = React.createClass({
       </div>
     )
   }
-  
-});
+}
 
 
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     googleID: state.googleID,
     trips: state.trips,
     searchResults: state.searchResults
-  };
-};
+  }
+}
 
-var Container = connect(mapStateToProps)(TripSaveLoad);
-
-module.exports = Container;
+export default connect(mapStateToProps)(TripSaveLoad)

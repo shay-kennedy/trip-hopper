@@ -1,11 +1,7 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var router = require('react-router');
-var Link = router.Link;
+import React from 'react'
 
 
-var Landing = function(){
-
+const Landing = () => {
 	return (
 		<div id="landing">
 			<h1>Trip Hopper</h1>
@@ -13,8 +9,6 @@ var Landing = function(){
 			<a href="/auth/google"><input className="login" type="button" value="Login" /></a>
 		</div>
 	)
+}
 
-};
-
-
-module.exports = Landing;
+export default Landing
