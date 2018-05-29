@@ -105,7 +105,6 @@
     "react-router-redux": "=4.0.8",
     "redux": "=3.6.0",
     "redux-thunk": "=2.1.0",
-    "request": "=2.79.0",
     "yelp": "=1.0.1"
   }
 }

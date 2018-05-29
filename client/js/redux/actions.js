@@ -74,9 +74,9 @@ var poiSearch = function(searchTerm, searchLocation, searchCLL) {
     var term = searchTerm;
     var cll = searchCLL;
     if (location) {
-      var url = `/api/${term}?location=${location}`;
+      var url = `/yelp/${term}?location=${location}`;
     } else if (cll) {
-      var url = `/api/${term}?cll=${cll}`;
+      var url = `/yelp/${term}?cll=${cll}`;
     }
     return fetch(url)
     .then(function(response) {
@@ -105,7 +105,7 @@ var addTrip = function(tripName, poi, googleID) {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
     var activeTrip = tripName
-    var url = `/user/${googleID}/${activeTrip}`;
+    var url = `/user/trips`;
   return fetch(url,
   {
     method: 'put',
@@ -154,7 +154,7 @@ var addTrip = function(tripName, poi, googleID) {
 var removeTrip = function(googleID, _id) {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
-    var url = `/user/removeTrip/${googleID}`;
+    var url = `/user/trips`;
   return fetch(url,
   {
     method: 'delete',
@@ -185,10 +185,10 @@ var removeTrip = function(googleID, _id) {
 };
 
 // PUT request to add POI
-var addPoi = function(tripName, poi, googleID) {
+var addPoi = function(tripId, poi, googleID) {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
-    var url = `/user/trips/${googleID}/${tripName}`;
+    var url = `/user/poi/${tripId}`;
   return fetch(url,
   {
     method: 'put',
@@ -230,16 +230,15 @@ var addPoi = function(tripName, poi, googleID) {
 };
 
 // PUT request to remove entire trip from trips array
-var removePoi = function(googleID, _id, poi) {
+var removePoi = function(googleID, tripId, poi) {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
-    var url = `/user/poi/removePoi/${googleID}`;
+    var url = `/user/poi/${tripId}`;
   return fetch(url,
   {
     method: 'delete',
     headers: {'Content-type': 'application/json', 'Authorization': 'bearer ' + token},
     body: JSON.stringify({
-      '_id': _id,
       'id': poi.id
     })
   }
@@ -265,10 +264,10 @@ var removePoi = function(googleID, _id, poi) {
 };
 
 // PUT request to change activeTrip
-var setActiveTrip = function(activeTrip) {
+var setActiveTrip = function(tripId) {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
-    var url = `/user/${activeTrip}`;
+    var url = `/user/active/${tripId}`;
   return fetch(url,
   {
     method: 'put',
