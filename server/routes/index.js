@@ -1,7 +1,7 @@
+import express from 'express'
 import auth from './auth'
 import user from './user'
 import yelp from './yelp'
-import express from 'express'
 
 
 const router = express.Router()

@@ -1,5 +1,5 @@
 import express from 'express'
-import passport from '../middleware/google-passport'
+import passport from '../middleware/passport-google-strategy'
 
 
 const router = express.Router()

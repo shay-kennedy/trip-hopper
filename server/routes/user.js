@@ -1,5 +1,5 @@
 import express from 'express'
-import passport from '../middleware/bearer-passport'
+import passport from '../middleware/passport-bearer-strategy'
 import { User } from '../models'
 
 
@@ -82,7 +82,7 @@ router.delete('/poi/:_id',
   }
 )
 
-app.put('/active/:_id',
+router.put('/active/:_id',
   passport.authenticate('bearer', { session: false }),
   function (req, res) {
     User.findOneAndUpdate(

@@ -1,6 +1,5 @@
 import express from 'express'
-import unirest from 'unirest'
-import passport from '../middleware/bearer-passport'
+import Yelp from 'yelp'
 try {
   var config = require('../../config').config
 } catch (e) { }
