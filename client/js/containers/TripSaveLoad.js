@@ -41,11 +41,9 @@ export class TripSaveLoad extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = ({reducer}) => {
   return {
-    googleID: state.googleID,
-    trips: state.trips,
-    searchResults: state.searchResults
+    trips: reducer.trips,
   }
 }
 

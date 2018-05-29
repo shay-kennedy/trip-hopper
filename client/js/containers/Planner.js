@@ -7,9 +7,10 @@ var actions = require('../redux/actions')
 
 export class Planner extends Component {
   componentDidMount() {
-  	this.props.dispatch(actions.fetchUser())
+  	this.props.fetchUser()
   }
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="container">
@@ -24,13 +25,10 @@ export class Planner extends Component {
   }
 }
 
-
-const mapStateToProps = (state, props) => {
-    return {
-      googleID: state.googleID,
-      trips: state.trips,
-      searchResults: state.searchResults
-    }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUser: () => { dispatch(actions.fetchUser()) },
+  }
 }
 
-export default connect(mapStateToProps)(Planner)
+export default connect(null, mapDispatchToProps)(Planner)

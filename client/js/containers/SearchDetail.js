@@ -42,11 +42,10 @@ export class SearchDetail extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = ({reducer}) => {
   return {
-    googleID: state.googleID,
-    trips: state.trips,
-    activeTrip: state.activeTrip
+    googleID: reducer.googleID,
+    activeTrip: reducer.activeTrip
   }
 }
 

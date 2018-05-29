@@ -21,11 +21,9 @@ export class SearchResults extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = ({reducer}) => {
   return {
-    googleID: state.googleID,
-    trips: state.trips,
-    searchResults: state.searchResults
+    searchResults: reducer.searchResults
   }
 }
 

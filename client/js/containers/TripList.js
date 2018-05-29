@@ -25,6 +25,7 @@ export class TripList extends Component {
     })
   }
   render() {
+    console.log(this.props)
     var savedTrips = this.props.trips.map((trip) => {
       return <TripListDetail key={trip.tripName} trip={trip} changeView={this.loadTrip} />
     })
@@ -42,11 +43,9 @@ export class TripList extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = ({reducer}) => {
   return {
-    googleID: state.googleID,
-    trips: state.trips,
-    searchResults: state.searchResults
+    trips: reducer.trips,
   }
 }
 

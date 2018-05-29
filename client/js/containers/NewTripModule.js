@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { SearchInput, PlannerHeader } from '../components'
 import { NewTripResults } from '../containers'
 var actions = require('../redux/actions')
 
 
-export class NewTripModule extends Component {
+export default class NewTripModule extends Component {
   componentDidMount() {
     this.props.dispatch(actions.fetchUser())
   }
@@ -24,14 +23,3 @@ export class NewTripModule extends Component {
     )
   }
 }
-
-
-const mapStateToProps = (state, props) => {
-  return {
-    googleID: state.googleID,
-    trips: state.trips,
-    searchResults: state.searchResults
-  }
-}
-
-export default connect(mapStateToProps)(NewTripModule)

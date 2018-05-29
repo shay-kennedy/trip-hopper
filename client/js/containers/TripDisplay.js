@@ -49,16 +49,15 @@ export class TripDisplay extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = ({reducer}) => {
   return {
-    googleID: state.googleID,
-    trip: state.trips.find((trip) => {
-      if(state.activeTrip == trip._id) {
+    googleID: reducer.googleID,
+    trip: reducer.trips.find((trip) => {
+      if(reducer.activeTrip == trip._id) {
         return trip
       }
     }),
-    searchResults: state.searchResults,
-    activeTrip: state.activeTrip
+    activeTrip: reducer.activeTrip
   }
 }
 
