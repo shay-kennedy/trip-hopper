@@ -3,16 +3,13 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { PlannerHeader } from '../components'
 import { TripDisplayDetail } from '../containers'
-import { fetchAndHandleUser, removeTrip } from '../redux/modules/user'
+import { removeTrip } from '../redux/modules/user'
 
 
 export class TripDisplay extends Component {
   constructor(props) {
     super(props)
     this.deleteTrip = this.deleteTrip.bind(this)
-  }
-  componentDidMount() {
-    this.props.fetchUser()
   }
   deleteTrip() {
     this.props.removeTrip(this.props.activeTrip)
@@ -62,7 +59,6 @@ const mapStateToProps = ({user}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => { dispatch(fetchAndHandleUser()) },
     removeTrip: (tripId) => { dispatch(removeTrip(tripId)) },
   }
 }

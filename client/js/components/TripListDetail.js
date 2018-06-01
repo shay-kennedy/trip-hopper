@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { fetchAndHandleUser, setActiveTrip } from '../redux/modules/user'
+import { setActiveTrip } from '../redux/modules/user'
 
 
 export class TripListDetail extends Component {
   constructor(props) {
     super(props)
     this.loadTrip = this.loadTrip.bind(this)
-  }
-  componentDidMount() {
-    this.props.fetchUser()
   }
   loadTrip() {
     this.props.setActiveTrip(this.props.trip._id)
@@ -36,7 +33,6 @@ export class TripListDetail extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => { dispatch(fetchAndHandleUser()) },
     setActiveTrip: (tripId) => { dispatch(setActiveTrip(tripId)) },
   }
 }
