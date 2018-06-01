@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Map } from '../components'
-import { fetchAndHandleUser, removePoi } from '../redux/modules/user'
+import { removePoi } from '../redux/modules/user'
 
 
 export class TripDisplayDetail extends Component {
   constructor(props) {
     super(props)
     this.deletePoi = this.deletePoi.bind(this)
-  }
-  componentDidMount() {
-    this.props.fetchUser()
   }
   deletePoi() {
     this.props.removePoi(this.props.activeTrip, this.props.poi)
@@ -52,7 +49,6 @@ const mapStateToProps = ({user}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => { dispatch(fetchAndHandleUser()) },
     removePoi: (tripId, poi) => { dispatch(removePoi(tripId, poi)) },
   }
 }
