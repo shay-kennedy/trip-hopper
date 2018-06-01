@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-var actions = require('../redux/actions')
+import { fetchAndHandlePois } from '../redux/modules/search'
 
 
 export class SearchInput extends Component {
@@ -34,7 +34,7 @@ export class SearchInput extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    search: (searchText, location) => { dispatch(actions.poiSearch(searchText, location)) },
+    search: (searchText, location) => { dispatch(fetchAndHandlePois(searchText, location)) },
   }
 }
 

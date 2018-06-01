@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PlannerLanding } from '../components'
 import { SearchModule, TripModule } from '../containers'
-var actions = require('../redux/actions')
+import { fetchAndHandleUser } from '../redux/modules/user'
 
 
 export class Planner extends Component {
@@ -26,7 +26,7 @@ export class Planner extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => { dispatch(actions.fetchUser()) },
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
   }
 }
 

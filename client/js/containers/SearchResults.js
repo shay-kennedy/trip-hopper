@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { SearchDetail } from '../containers'
-var actions = require('../redux/actions')
+import { fetchAndHandleUser } from '../redux/modules/user'
 
 
 export class SearchResults extends Component {
   componentDidMount() {
-    this.props.dispatch(actions.fetchUser())
+    this.props.fetchUser()
   }
   render() {
     var searchResultsDetail = this.props.searchResults.map((poi) => {
@@ -21,9 +21,15 @@ export class SearchResults extends Component {
 }
 
 
-const mapStateToProps = ({reducer}) => {
+const mapStateToProps = ({search}) => {
   return {
-    searchResults: reducer.searchResults
+    searchResults: search.searchResults
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
   }
 }
 

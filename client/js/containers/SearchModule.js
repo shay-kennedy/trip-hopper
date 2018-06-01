@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { PoiSearchInput, PlannerHeader } from '../components'
 import { SearchResults } from '../containers'
-var actions = require('../redux/actions')
+import { fetchAndHandleUser } from '../redux/modules/user'
 
 
-export default class SearchModule extends Component {
+class SearchModule extends Component {
   componentDidMount() {
-    this.props.dispatch(actions.fetchUser())
+    this.props.fetchUser()
   }
   render() {
     return (
@@ -24,3 +25,12 @@ export default class SearchModule extends Component {
     )
   }
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SearchModule)

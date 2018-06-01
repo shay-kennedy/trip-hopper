@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { PlannerHeader } from '../components'
 import { TripDisplayDetail } from '../containers'
-var actions = require('../redux/actions')
+import { fetchAndHandleUser, removeTrip } from '../redux/modules/user'
 
 
 export class TripDisplay extends Component {
@@ -12,10 +12,10 @@ export class TripDisplay extends Component {
     this.deleteTrip = this.deleteTrip.bind(this)
   }
   componentDidMount() {
-    this.props.dispatch(actions.fetchUser())
+    this.props.fetchUser()
   }
   deleteTrip() {
-    this.props.dispatch(actions.removeTrip(this.props.googleID, this.props.activeTrip))
+    this.props.removeTrip(this.props.activeTrip)
   }
   render() {
     if (this.props.activeTrip == null) {
@@ -49,16 +49,22 @@ export class TripDisplay extends Component {
 }
 
 
-const mapStateToProps = ({reducer}) => {
+const mapStateToProps = ({user}) => {
   return {
-    googleID: reducer.googleID,
-    trip: reducer.trips.find((trip) => {
-      if(reducer.activeTrip == trip._id) {
+    trip: user.trips.find((trip) => {
+      if(user.activeTrip == trip._id) {
         return trip
       }
     }),
-    activeTrip: reducer.activeTrip
+    activeTrip: user.activeTrip
   }
 }
 
-export default connect(mapStateToProps)(TripDisplay)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
+    removeTrip: (tripId) => { dispatch(removeTrip(tripId)) },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TripDisplay)
