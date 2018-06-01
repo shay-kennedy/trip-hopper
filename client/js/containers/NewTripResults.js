@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NewTripDetail } from '../containers'
-var actions = require('../redux/actions')
+import { fetchAndHandleUser } from '../redux/modules/user'
 
 
 export class newTripResults extends Component {
   componentDidMount() {
-    this.props.dispatch(actions.fetchUser())
+    this.props.fetchUser()
   }
   render() {
     const newTripResultsDetail = this.props.searchResults.map((poi) => {
@@ -27,4 +27,10 @@ const mapStateToProps = ({reducer}) => {
   }
 }
 
-export default connect(mapStateToProps)(newTripResults)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(newTripResults)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-var actions = require('../redux/actions')
+import { fetchAndHandleUser, setActiveTrip } from '../redux/modules/user'
 
 
 export class TripListDetail extends Component {
@@ -36,8 +36,8 @@ export class TripListDetail extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => { dispatch(actions.fetchUser()) },
-    setActiveTrip: (tripId) => { dispatch(actions.setActiveTrip(tripId)) },
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
+    setActiveTrip: (tripId) => { dispatch(setActiveTrip(tripId)) },
   }
 }
 

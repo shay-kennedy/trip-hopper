@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-var actions = require('../redux/actions')
+import { fetchAndHandlePois } from '../redux/modules/search'
 
 
 export class PoiSearchInput extends Component {
@@ -33,13 +33,11 @@ export class PoiSearchInput extends Component {
 }
 
 
-const mapStateToProps = ({reducer}) => {
+const mapStateToProps = ({search, user}) => {
   return {
-    googleID: reducer.googleID,
-    trips: reducer.trips,
-    searchResults: reducer.searchResults,
-    trip: reducer.trips.find((trip) => {
-      if(reducer.activeTrip == trip._id) {
+    searchResults: search.searchResults,
+    trip: user.trips.find((trip) => {
+      if(user.activeTrip == trip._id) {
         return trip
       }
     })
@@ -48,7 +46,7 @@ const mapStateToProps = ({reducer}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    search: (searchText, location, cll) => { dispatch(actions.poiSearch(searchText, location, cll)) },
+    search: (searchText, location, cll) => { dispatch(fetchAndHandlePois(searchText, location, cll)) },
   }
 }
 

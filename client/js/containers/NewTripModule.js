@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { SearchInput, PlannerHeader } from '../components'
 import { NewTripResults } from '../containers'
-var actions = require('../redux/actions')
+import { fetchAndHandleUser } from '../redux/modules/user'
 
 
 export class NewTripModule extends Component {
@@ -27,7 +27,7 @@ export class NewTripModule extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => { dispatch(actions.fetchUser()) },
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
   }
 }
 

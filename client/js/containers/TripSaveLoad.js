@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { TripListDetail } from '../components'
-var actions = require('../redux/actions')
 
 
 export class TripSaveLoad extends Component {
@@ -41,9 +40,9 @@ export class TripSaveLoad extends Component {
 }
 
 
-const mapStateToProps = ({reducer}) => {
+const mapStateToProps = ({user}) => {
   return {
-    trips: reducer.trips,
+    trips: user.trips,
   }
 }
 

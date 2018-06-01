@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Map } from '../components'
-var actions = require('../redux/actions')
+import { addTrip } from '../redux/modules/user'
 
 
 export class NewTripDetail extends Component {
@@ -15,7 +15,7 @@ export class NewTripDetail extends Component {
     if (tripName == null) {
       return
     }
-    this.props.addTrip(tripName, this.props, this.props.googleID)
+    this.props.addTrip(tripName, this.props)
   }
   render() {
     return (
@@ -46,16 +46,10 @@ export class NewTripDetail extends Component {
 }
 
 
-const mapStateToProps = ({reducer}) => {
-  return {
-    googleID: reducer.googleID,
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTrip: (tripName, tripData, googleID) => { dispatch(actions.addTrip(tripName, tripData, googleID)) }
+    addTrip: (tripName, tripData) => { dispatch(addTrip(tripName, tripData)) }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewTripDetail)
+export default connect(null, mapDispatchToProps)(NewTripDetail)

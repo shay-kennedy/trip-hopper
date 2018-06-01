@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Map } from '../components'
-var actions = require('../redux/actions')
+import { addPoi } from '../redux/modules/user'
 
 
 export class SearchDetail extends Component {
@@ -11,7 +11,7 @@ export class SearchDetail extends Component {
     this.addPoi = this.addPoi.bind(this)
   }
   addPoi() {
-    this.props.dispatch(actions.addPoi(this.props.activeTrip, this.props, this.props.googleID))
+    this.props.addPoi(this.props.activeTrip, this.props)
   }
   render() {
     return (
@@ -46,6 +46,12 @@ const mapStateToProps = ({reducer}) => {
   return {
     googleID: reducer.googleID,
     activeTrip: reducer.activeTrip
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addPoi: () => { dispatch(addPoi()) },
   }
 }
 
