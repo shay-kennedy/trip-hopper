@@ -1,4 +1,4 @@
-import { poiSearch } from '../../helpers/api'
+import { poiSearch } from '../../utils/api'
 
 const FETCHING_POIS = 'FETCHING_POIS'
 const FETCHING_POIS_SUCCESS = 'FETCHING_POIS_SUCCESS'

@@ -1,14 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { logout } from '../redux/modules/user'
 
 
-const PlannerLanding = () => {
+const PlannerLanding = (props) => {
   return (
     <div id="planner-landing-container">
       <div className="header">
-        <a href="/logout" id="logout"><input type="button" value="Log Out" /></a>
-        {/* <button onClick={() => logout()} className='input-button btn btn-warning'>Logout</button> */}
+        <button onClick={() => props.logoutUser()} className='input-button btn btn-warning logout'>Logout</button>
         <Link to="/planner"><h1 id="title">Trip Hopper</h1></Link>
       </div>
       <div id="planner-landing-main">
@@ -25,4 +25,11 @@ const PlannerLanding = () => {
   )
 }
 
-export default PlannerLanding
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => { dispatch(logout()) }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PlannerLanding)
