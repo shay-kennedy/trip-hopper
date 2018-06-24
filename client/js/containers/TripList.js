@@ -18,7 +18,7 @@ export class TripList extends Component {
       viewMode: !this.state.viewMode
     })
   }
-  loadTrip(event) {
+  loadTrip() {
     this.setState({
       viewMode: false
     })

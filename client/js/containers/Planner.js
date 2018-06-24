@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { PlannerLanding } from '../components'
-import { SearchModule, TripModule } from '../containers'
-import { fetchAndHandleUser } from '../redux/modules/user'
+import { fetchAndHandleUser, logout } from '../redux/modules/user'
+import Cookies from 'js-cookie'
 
 
 export class Planner extends Component {
@@ -10,10 +9,17 @@ export class Planner extends Component {
   	this.props.fetchUser()
   }
   render() {
+    const token = Cookies.get('accessToken')
     return (
       <div>
         <div className="container">
           {this.props.children}
+          <div style={{marginTop: '4rem'}}>{token && <button
+            onClick={() => props.logoutUser()}
+            className='input-button btn btn-warning logout'
+          >
+            Logout
+          </button>}</div>
         </div>
         <div className="yelp-credit footer">
           <p>POWERED BY</p>
@@ -27,6 +33,7 @@ export class Planner extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchUser: () => { dispatch(fetchAndHandleUser()) },
+    logoutUser: () => { dispatch(logout()) }
   }
 }
 

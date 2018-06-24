@@ -32,10 +32,11 @@ export const logoutUser = () => {
 }
 
 export const poiSearch = (searchTerm, location, cll) => {
+  let url = "/yelp/"
   if (location) {
-    const url = `/yelp/${term}?location=${location}`
+    url = url + `${searchTerm}?location=${location}`
   } else if (cll) {
-    const url = `/yelp/${term}?cll=${cll}`
+    url = url + `${searchTerm}?cll=${cll}`
   }
   return api().get(url)
 }

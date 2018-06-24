@@ -53,4 +53,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps)(TripDisplayDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(TripDisplayDetail)

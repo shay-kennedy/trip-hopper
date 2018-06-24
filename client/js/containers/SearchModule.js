@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
 import { PoiSearchInput, PlannerHeader } from '../components'
 import { SearchResults } from '../containers'

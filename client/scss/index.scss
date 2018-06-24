@@ -205,7 +205,8 @@ input[type=button]:focus, input[type=text]:focus {
   display:block;
   font-size:.75em;
   color: #242424;
-  float: right;
+  text-align: center;
+  margin: 4rem auto 0 auto;
   border: none;
   padding: 1em;
   background-color: rgba(255, 255, 255, 0.95);
@@ -227,6 +228,7 @@ input[type=button]:focus, input[type=text]:focus {
   @include span-columns(10);
   @include shift(1);
   text-align: center;
+  margin-bottom: 4rem;
 }
 
 .search-module h1, .trip-module h1, .saved-display h1, .header h1 {

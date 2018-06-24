@@ -28,8 +28,8 @@ function fetchingPoisFailure(error) {
 export function fetchAndHandlePois(searchTerm, location, cll) {
   return function (dispatch) {
     dispatch(fetchingPois())
-    poiSearch(searchTerm, location, cll).then(response => {
-      dispatch(fetchingPoisSuccess(response.data))
+    poiSearch(searchTerm, location, cll).then(res => {
+      dispatch(fetchingPoisSuccess(res.data.businesses))
     }).catch(error => {
       dispatch(fetchingPoisFailure(error))
     })

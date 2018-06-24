@@ -42,10 +42,10 @@ export class SearchDetail extends Component {
 }
 
 
-const mapStateToProps = ({reducer}) => {
+const mapStateToProps = ({user}) => {
   return {
-    googleID: reducer.googleID,
-    activeTrip: reducer.activeTrip
+    googleID: user.googleID,
+    activeTrip: user.activeTrip
   }
 }
 
@@ -55,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps)(SearchDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchDetail)
