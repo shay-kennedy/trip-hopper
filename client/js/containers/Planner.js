@@ -14,12 +14,12 @@ export class Planner extends Component {
       <div>
         <div className="container">
           {this.props.children}
-          <div style={{marginTop: '4rem'}}>{token && <button
+          {token && <button
             onClick={() => props.logoutUser()}
             className='input-button btn btn-warning logout'
           >
             Logout
-          </button>}</div>
+          </button>}
         </div>
         <div className="yelp-credit footer">
           <p>POWERED BY</p>
