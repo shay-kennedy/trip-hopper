@@ -37,13 +37,13 @@ router.put('/trips',
   }
 )
 
-router.delete('/trips',
+router.delete('/trips/:tripId',
   passport.authenticate('bearer', { session: false }),
   function (req, res) {
     User.findOneAndUpdate(
       { 'googleID': req.user.googleID },
       {
-        $pull: { 'trips': { '_id': req.body._id } },
+        $pull: { 'trips': { '_id': req.params.tripId } },
         $set: { 'activeTrip': null }
       },
       { new: true })
@@ -52,13 +52,13 @@ router.delete('/trips',
   }
 )
 
-router.put('/poi/:_id',
+router.put('/poi/:tripId',
   passport.authenticate('bearer', { session: false }),
   function (req, res) {
     User.findOneAndUpdate(
       {
         'googleID': req.user.googleID,
-        'trips._id': req.params._id
+        'trips._id': req.params.tripId
       },
       { $push: { 'trips.$.pois': req.body } },
       { new: true })
@@ -67,27 +67,27 @@ router.put('/poi/:_id',
   }
 )
 
-router.delete('/poi/:_id',
+router.delete('/poi/:tripId/:poiId',
   passport.authenticate('bearer', { session: false }),
   function (req, res) {
     User.findOneAndUpdate(
       {
         'googleID': req.user.googleID,
-        'trips._id': req.params._id
+        'trips._id': req.params.tripId
       },
-      { $pull: { 'trips.$.pois': { 'id': req.body.id } } },
+      { $pull: { 'trips.$.pois': { 'id': req.params.poiId } } },
       { new: true })
       .catch(err => res.send(err))
       .then(user => res.json(user))
   }
 )
 
-router.put('/active/:_id',
+router.put('/active/:tripId',
   passport.authenticate('bearer', { session: false }),
   function (req, res) {
     User.findOneAndUpdate(
       { 'googleID': req.user.googleID },
-      { $set: { 'activeTrip': req.params._id } },
+      { $set: { 'activeTrip': req.params.tripId } },
       { new: true })
       .catch(err => res.send(err))
       .then(user => res.json(user))

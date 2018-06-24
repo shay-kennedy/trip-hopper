@@ -67,9 +67,8 @@ export const addUserTrip = (tripName, poi) => {
   return api().put('/user/trips', data)
 }
 
-export const removeUserTrip = (_id) => {
-  const data = { _id }
-  return api().delete('/user/trips', data)
+export const removeUserTrip = (tripId) => {
+  return api().delete(`/user/trips/${tripId}`)
 }
 
 export const addUserTripPoi = (tripId, poi) => {
@@ -94,9 +93,8 @@ export const addUserTripPoi = (tripId, poi) => {
   return api().put(`/user/poi/${tripId}`, data)
 }
 
-export const removeUserTripPoi = (tripId, poi) => {
-  const data = { id: poi.id }
-  return api().delete(`/user/poi/${tripId}`, data)
+export const removeUserTripPoi = (tripId, poiId) => {
+  return api().delete(`/user/poi/${tripId}/${poiId}`)
 }
 
 export const setActiveUserTrip = (tripId) => {

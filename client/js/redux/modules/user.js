@@ -39,8 +39,8 @@ function fetchingUserFailure(error) {
 export function fetchAndHandleUser() {
   return function (dispatch) {
     dispatch(fetchingUser())
-    fetchUser().then(response => {
-      dispatch(fetchingUserSuccess(response.data))
+    fetchUser().then(res => {
+      dispatch(fetchingUserSuccess(res.data))
     }).catch(error => {
       dispatch(fetchingUserFailure(error))
     })
@@ -49,8 +49,8 @@ export function fetchAndHandleUser() {
 
 export function addTrip(tripName, poi) {
   return function (dispatch) {
-    addUserTrip(tripName, poi).then(response => {
-      dispatch(fetchingUserSuccess(response.data))
+    addUserTrip(tripName, poi).then(res => {
+      dispatch(fetchingUserSuccess(res.data))
     }).catch(error => {
       dispatch(fetchingUserFailure(error))
     })
@@ -59,8 +59,8 @@ export function addTrip(tripName, poi) {
 
 export function removeTrip(tripId) {
   return function (dispatch) {
-    removeUserTrip(tripId).then(response => {
-      dispatch(fetchingUserSuccess(response.data))
+    removeUserTrip(tripId).then(res => {
+      dispatch(fetchingUserSuccess(res.data))
     }).catch(error => {
       dispatch(fetchingUserFailure(error))
     })
@@ -69,18 +69,18 @@ export function removeTrip(tripId) {
 
 export function addPoi(tripId, poi) {
   return function (dispatch) {
-    addUserTripPoi(tripId, poi).then(response => {
-      dispatch(fetchingUserSuccess(response.data))
+    addUserTripPoi(tripId, poi).then(res => {
+      dispatch(fetchingUserSuccess(res.data))
     }).catch(error => {
       dispatch(fetchingUserFailure(error))
     })
   }
 }
 
-export function removePoi(tripId, poi) {
+export function removePoi(tripId, poiId) {
   return function (dispatch) {
-    removeUserTripPoi(tripId, poi).then(response => {
-      dispatch(fetchingUserSuccess(response.data))
+    removeUserTripPoi(tripId, poiId).then(res => {
+      dispatch(fetchingUserSuccess(res.data))
     }).catch(error => {
       dispatch(fetchingUserFailure(error))
     })
@@ -89,8 +89,8 @@ export function removePoi(tripId, poi) {
 
 export function setActiveTrip(tripId) {
   return function (dispatch) {
-    setActiveUserTrip(tripId).then(response => {
-      dispatch(fetchingUserSuccess(response.data))
+    setActiveUserTrip(tripId).then(res => {
+      dispatch(fetchingUserSuccess(res.data))
     }).catch(error => {
       dispatch(fetchingUserFailure(error))
     })
@@ -112,7 +112,7 @@ function logoutUserFailure(error) {
 
 export function logout() {
   return function (dispatch) {
-    logoutUser().then(response => {
+    logoutUser().then(res => {
       Cookies.remove('accessToken')
       window.location = "/"
       dispatch(logoutUserSuccess())

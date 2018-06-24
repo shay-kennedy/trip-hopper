@@ -10,7 +10,8 @@ export class TripDisplayDetail extends Component {
     this.deletePoi = this.deletePoi.bind(this)
   }
   deletePoi() {
-    this.props.removePoi(this.props.activeTrip, this.props.poi)
+    const { activeTrip, poi } = this.props
+    this.props.removePoi(activeTrip, poi.id)
   }
   render() {
     return (
@@ -49,7 +50,7 @@ const mapStateToProps = ({user}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removePoi: (tripId, poi) => { dispatch(removePoi(tripId, poi)) },
+    removePoi: (tripId, poiId) => { dispatch(removePoi(tripId, poiId)) },
   }
 }
 

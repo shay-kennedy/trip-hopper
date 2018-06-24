@@ -51,7 +51,7 @@ const mapStateToProps = ({user}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPoi: () => { dispatch(addPoi()) },
+    addPoi: (activeTrip, poi) => { dispatch(addPoi(activeTrip, poi)) },
   }
 }
 

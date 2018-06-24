@@ -15,7 +15,7 @@ export class Planner extends Component {
         <div className="container">
           {this.props.children}
           {token && <button
-            onClick={() => props.logoutUser()}
+            onClick={() => this.props.logoutUser()}
             className='input-button btn btn-warning logout'
           >
             Logout
